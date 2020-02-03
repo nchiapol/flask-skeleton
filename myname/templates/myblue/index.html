@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}myblue{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p><a href="{{ url_for('myblue.create') }}">Create new entry</a></p>
+  <table>
+      <thead><th>Date</th><th>Value</th></thead>
+      <tbody>
+      {% for row in data %}
+        <tr>
+            <td>{{ row.date }}</td>
+            <td>{{ row.value }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan=2>No data yet.</td></tr>
+      {% endfor %}
+      </tbody>
+  </table>
+{% endblock %}
